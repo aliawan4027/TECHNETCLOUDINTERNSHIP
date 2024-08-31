@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        main {
+            width: 500px;
+            height: 500px;
+            position: relative;
+            box-shadow: 0 0 50px red;
+            overflow: hidden;
+            margin-bottom: 0; 
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transition: transform 0.5s ease;
+        }
+
+        .nav {
+            text-align: center;
+            margin-top: 10px; 
+        }
+
+        .Prev, .Next {
+            border: 2px solid green; 
+            color: white;
+            background-color: green;
+            font-size: medium;
+            padding: 5px 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+
+        .Prev:hover, .Next:hover {
+            background-color: darkgreen; 
+        }
+
+        @media (max-width: 768px) {
+            main {
+                width: 90vw;
+                height: 90vw;
+            }
+
+            .Prev, .Next {
+                font-size: small;
+                padding: 4px 8px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .Prev, .Next {
+                font-size: smaller;
+                padding: 2px 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <img src="image1.jpg" class="slide" alt="Image 1">
+        <img src="image2.webp" class="slide" alt="Image 2">
+        <img src="image3.webp" class="slide" alt="Image 3">
+        <img src="image4.jpg" class="slide" alt="Image 4">
+    </main>
+    <div class="nav">
+        <button class="Prev" onclick="goPrev()">Prev</button>
+        <button class="Next" onclick="goNext()">Next</button>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll(".slide");
+        let counter = 0;
+
+        slides.forEach((slide, index) => {
+            slide.style.left = `${index * 100}%`;
+        });
+
+        const goPrev = () => {
+            if (counter > 0) {
+                counter--;
+                slideImage();
+            } else {
+                counter = slides.length - 1;
+                slideImage();
+            }
+        };
+
+        const goNext = () => {
+            if (counter < slides.length - 1) {
+                counter++;
+                slideImage();
+            } else {
+                counter = 0;
+                slideImage();
+            }
+        };
+
+        const slideImage = () => {
+            slides.forEach((slide) => {
+                slide.style.transform = `translateX(-${counter * 100}%)`;
+            });
+        };
+    </script>
+</body>
+</html>

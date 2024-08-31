@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        .navbar {
+            margin-bottom: 20px;
+        }
+
+        .hero-section {
+            background-color: #333;
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+        }
+
+        .content-section {
+            padding: 60px 0;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Animated Website</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <div class="container">
+            <h1 class="animate__animated">Welcome to  Animated Website</h1>
+        </div>
+    </section>
+
+    <section id="services" class="content-section">
+        <div class="container">
+            <h2 class="text-center animate__animated">Our Services</h2>
+            <div class="row mt-4">
+                <div class="col-md-4 animate__animated">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Web Design</h5>
+                            <p class="card-text">We provide professional web design services with stunning animations to attract your audience.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 animate__animated">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">App Development</h5>
+                            <p class="card-text">Our app development services ensure high performance and great user experience with modern animations.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 animate__animated">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">SEO Optimization</h5>
+                            <p class="card-text">Boost your online presence with our SEO services, making your website stand out in search results.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="content-section bg-light">
+        <div class="container">
+            <h2 class="text-center animate__animated">About Us</h2>
+            <p class="text-center animate__animated">We are a team of creative designers and developers who specialize in creating dynamic and responsive websites with animations.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="content-section">
+        <div class="container">
+            <h2 class="text-center animate__animated">Contact Us</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6 animate__animated">
+                    <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="3" placeholder="Enter your message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Animated Website. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            function addAnimationLoop(element, animationName, delay) {
+                setInterval(function() {
+                    element.classList.remove('animate__animated', animationName);
+                    void element.offsetWidth;
+                    element.classList.add('animate__animated', animationName);
+                }, delay);
+            }
+
+            const heroTitle = document.querySelector('.hero-section h1');
+            const heroSubtitle = document.querySelector('.hero-section p');
+            const servicesItems = document.querySelectorAll('#services .col-md-4');
+            const aboutTitle = document.querySelector('#about h2');
+            const aboutText = document.querySelector('#about p');
+            const contactTitle = document.querySelector('#contact h2');
+            const contactForm = document.querySelector('#contact form');
+
+            addAnimationLoop(heroTitle, 'animate__fadeInLeft', 3000);
+            addAnimationLoop(heroSubtitle, 'animate__fadeInRight', 4000);
+
+            servicesItems.forEach((el, index) => {
+                addAnimationLoop(el, 'animate__slideInUp', 3000 + index * 500);
+            });
+
+            addAnimationLoop(aboutTitle, 'animate__fadeInDown', 4500);
+            addAnimationLoop(aboutText, 'animate__fadeInUp', 5000);
+            addAnimationLoop(contactTitle, 'animate__bounceIn', 5500);
+            addAnimationLoop(contactForm, 'animate__zoomIn', 6000);
+        });
+    </script>
+</body>
+</html>
